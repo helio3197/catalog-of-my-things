@@ -1,3 +1,5 @@
+require './run'
+
 def print_options
   puts 'Please choose an option
 1) List all books
@@ -50,6 +52,8 @@ end
 
 def main
   puts 'Catalog of my things'
+
+  run
 
   loop do
     exec_options(print_options)
