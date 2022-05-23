@@ -4,7 +4,7 @@ class Item
   def initialize(publish_date)
     @id = rand(1..1000)
     @publish_date = publish_date
-    @archived = false 
+    @archived = false
   end
 
   def add_genre(genre)
@@ -23,10 +23,10 @@ class Item
   end
 
   def can_be_archived?()
-    @publish_date > 10 
+    @publish_date > 10
   end
 
   def move_to_archive()
-    @archived = true if can_be_archived()
+    @archived = true if can_be_archived
   end
 end
