@@ -9,4 +9,9 @@ class Genre
     @id = rand(1..1000)
     @items = []
   end
+
+  def add_item(item)
+    @items << item
+    item.genre = self
+  end
 end
