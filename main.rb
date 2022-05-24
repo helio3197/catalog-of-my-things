@@ -50,7 +50,6 @@ end
 
 def main
   puts 'Catalog of my things'
-
   loop do
     exec_options(print_options)
   end
