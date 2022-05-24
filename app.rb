@@ -1,9 +1,9 @@
-['./book', 'json', 'date', './book_methods'].each do |file|
+['./book', 'json', 'date', './book_methods', './label_methods', './label'].each do |file|
   require file
 end
 
 class App
-  [BookMethod].each do |method|
+  [BookMethod, LabelMethods].each do |method|
     include method
   end
 
@@ -29,4 +29,11 @@ class App
   rescue ArgumentError
     false
   end
+  
+  def invalid?(option, max_value)
+    return true if option.to_i > max_value || /\D/.match?(option)
+
+    false
+  end
+  
 end
