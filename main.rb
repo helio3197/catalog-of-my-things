@@ -1,3 +1,5 @@
+require './app'
+
 def print_options
   puts 'Please choose an option
 1) List all books
@@ -18,10 +20,10 @@ end
 
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/MethodLength
-def exec_options(option)
+def exec_options(option, app)
   case option
   when '1'
-    puts 'select 1'
+    app.list_books
   when '2'
     puts 'select 2'
   when '3'
@@ -29,11 +31,11 @@ def exec_options(option)
   when '4'
     puts 'select 4'
   when '5'
-    puts 'select 5'
+    app.list_labels
   when '6'
     puts 'select 6'
   when '7'
-    puts 'select 7'
+    app.add_book
   when '8'
     puts 'select 8'
   when '9'
@@ -50,8 +52,9 @@ end
 
 def main
   puts 'Catalog of my things'
+  app = App.new
   loop do
-    exec_options(print_options)
+    exec_options(print_options, app)
   end
 end
 
