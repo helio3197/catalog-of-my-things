@@ -1,15 +1,18 @@
-['./book', 'json', 'date', './book_methods', './label_methods', './label'].each do |file|
+['./book', './game', './author', './game_methods', './author_methods', 'json', 'date', './book_methods', './label_methods', './label' ].each do |file|
   require file
 end
 
 class App
-  [BookMethod, LabelMethods].each do |method|
+  [BookMethod, LabelMethods, GameMethods, AuthorMethods].each do |method|
     include method
   end
+
 
   def initialize
     @books = []
     @labels = []
+    @games = []
+    @authors = []
   end
 
   def load_files
@@ -35,4 +38,5 @@ class App
 
     false
   end
+  
 end
