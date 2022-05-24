@@ -50,14 +50,16 @@ class App
   def list_games
     return puts 'There are no games yet' if @games.empty?
 
+    puts 'List of games:'
     @games.each_with_index do |game, index|
-      puts "#{index + 1}) #{game.first_name} #{game.last_name}, id=#{game.id}"
+      puts "#{index + 1}) #{game.multiplayer} #{game.last_played_at}, id=#{game.id}"
     end
   end
 
   def list_authors
     return puts 'There are no authors yet' if @authors.empty?
 
+    puts 'List of authors:'
     @authors.each_with_index do |author, index|
       puts "#{index + 1}) #{author.first_name} #{author.last_name}, id=#{author.id}"
     end
@@ -80,18 +82,19 @@ class App
     list_authors
     print '> '
     selection = gets.chomp
-    return print "Invalid option, try again.\n\n" if invalid?(selection, @authors.length)
 
     if selection == '0'
       create_author
       return list_authors_to_select
     end
 
+    return print "Invalid option, try again.\n\n" if invalid?(selection, @authors.length)
+
     @authors[selection.to_i - 1]
   end
 
   def invalid?(option, max_value)
-    return true if option.to_i >= max_value || /\D/.match?(option)
+    return true if option.to_i > max_value || /\D/.match?(option)
 
     false
   end
@@ -100,10 +103,10 @@ class App
     puts 'Please enter multiplayer mode:'
     print '> '
     multiplayer = gets.chomp
-    puts 'Please enter the last date when the game was played'
+    puts 'Please enter the last date when the game was played (yyyy-mm-dd)'
     print '> '
     last_played_at = gets.chomp
-    puts 'Please provide publish date'
+    puts 'Please provide publish date (yyyy-mm-dd)'
     print '> '
     publish_date = gets.chomp
     puts 'Select an author from the list or create a new one'
@@ -114,9 +117,13 @@ class App
   def add_game
     multiplayer, last_played_at, publish_date, author = game_details
 
+    return if author.nil?
+
     new_game = Game.new(multiplayer, last_played_at, publish_date)
     new_game.add_author(author)
 
     @games << new_game
+
+    puts 'Game created sucessfully!'
   end
 end
