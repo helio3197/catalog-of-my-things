@@ -22,6 +22,6 @@ describe Book do
   end
 
   it 'Book should have a publish_date' do
-    expect(@book.publish_date.strftime("%Y-%m-%d")).to eq('2010-09-18')
+    expect(@book.publish_date.strftime('%Y-%m-%d')).to eq('2010-09-18')
   end
 end
