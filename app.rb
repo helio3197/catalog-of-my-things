@@ -1,4 +1,12 @@
-['./book', './game', './author', './game_methods', './author_methods', './music_album_methods', './music_album'].each do |file|
+['./book',
+ './game',
+ './author',
+ './game_methods',
+ './author_methods',
+ './music_album_methods',
+ './music_album',
+ './genre_methods',
+ './genre'].each do |file|
   require file
 end
 
@@ -6,6 +14,7 @@ class App
   include GameMethods
   include AuthorMethods
   include MusicAlbumMethods
+  include GenreMethods
 
   def initialize
     @books = []

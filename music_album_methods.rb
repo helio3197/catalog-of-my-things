@@ -3,10 +3,10 @@ module MusicAlbumMethods
     return puts 'There are no music albums yet' if @music_albums.empty?
 
     puts 'List of music albums:'
-    @music_albums.each_with_index do |album, index|
+    @music_albums.each_with_index do |a, index|
       spotify = 'No'
-      spotify = 'Yes' if album.on_spotify
-      puts "#{index + 1}) On Spotify: #{spotify}, Publish date: #{album.publish_date}, ID=#{album.id}"
+      spotify = 'Yes' if a.on_spotify
+      puts "#{index + 1}) On Spotify: #{spotify}, Genre: #{a.genre.name}, Publish date: #{a.publish_date}, ID=#{a.id}"
     end
   end
 
@@ -36,7 +36,9 @@ module MusicAlbumMethods
 
       puts 'Invalid date format, please try again.'
     end
+    genre = list_genre_to_select
     new_album = MusicAlbum.new(spotify, publish_date, archived)
+    new_album.add_genre(genre)
     @music_albums << new_album
     puts 'Music album created sucessfully!'
   end
