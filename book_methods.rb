@@ -13,7 +13,7 @@ module BookMethod
       publish_date = gets.chomp
       break if valid_date?(publish_date)
 
-      puts 'Invalid date format.'
+      puts 'Invalid date format. Please try again.'
     end
     [publisher, cover_state, publish_date]
   end
