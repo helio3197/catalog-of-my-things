@@ -47,6 +47,22 @@ class App
     @books << Book.new(publisher, cover_state, publish_date)
   end
 
+  def list_games
+    return puts 'There are no games yet' if @games.empty?
+
+    @games.each_with_index do |game, index|
+      puts "#{index + 1}) #{game.first_name} #{game.last_name}, id=#{game.id}"
+    end
+  end
+
+  def list_authors
+    return puts 'There are no authors yet' if @authors.empty?
+
+    @authors.each_with_index do |author, index|
+      puts "#{index + 1}) #{author.first_name} #{author.last_name}, id=#{author.id}"
+    end
+  end
+
   def create_author
     puts 'Enter first name:'
     print '> '
@@ -61,10 +77,7 @@ class App
 
   def list_authors_to_select
     puts '0) Create a new author'
-    puts 'There are no authors yet' if @authors.empty?
-    @authors.each_with_index do |author, index|
-      puts "#{index + 1}) #{author.first_name} #{author.last_name}, id=#{author.id}"
-    end
+    list_authors
     print '> '
     selection = gets.chomp
     return print "Invalid option, try again.\n\n" if invalid?(selection, @authors.length)
