@@ -1,19 +1,31 @@
-['./book', 'json'].each do |file|
+['./book', 'json', 'date'].each do |file|
   require file
 end
 
+def valid_date?(date)
+  date_format = '%Y-%m-%d'
+  DateTime.strptime(date, date_format)
+  true
+rescue ArgumentError
+  false
+end
+
 def book_details
-    puts 'Please provide book publisher'
-    print '> '
-    publisher = gets.chomp
-    puts 'Please provide cover state'
-    print '> '
-    cover_state = gets.chomp
-    puts 'Please provide publish date'
+  puts 'Please provide book publisher'
+  print '> '
+  publisher = gets.chomp
+  puts 'Please provide cover state'
+  print '> '
+  cover_state = gets.chomp
+  publish_date = nil
+  loop do
+    puts 'Please provide publish date in the correct format (yyyy-mm-dd)'
     print '> '
     publish_date = gets.chomp
-    [publisher, cover_state, publish_date]
+    break if valid_date?(publish_date)
   end
+  [publisher, cover_state, publish_date]
+end
 
 class App
   def initialize
@@ -45,14 +57,14 @@ class App
   def load_books(filename = 'books.json')
     books = File.exist?(filename) ? JSON.parse(File.read(filename)) : []
     books.each do |book|
-        @books <<  Book.new(book['publisher'], book['cover_state'], book['publish_date'], book['archived'], book['id'])
+      @books << Book.new(book['publisher'], book['cover_state'], book['publish_date'], book['archived'], book['id'])
     end
   end
 
   def load_labels(filename = 'labels.json')
     labels = File.exist?(filename) ? JSON.parse(File.read(filename)) : []
     labels.each do |label|
-        @labels << Label.new(label['title'], label['color'], label['id'], label['items'])
+      @labels << Label.new(label['title'], label['color'], label['id'], label['items'])
     end
   end
 
@@ -64,7 +76,7 @@ class App
   def save_books(filename = 'books.json')
     File.write(filename, @books.to_json)
   end
-    
+
   def save_labels(filename = 'label.json')
     File.write(filename, @labels.to_json)
   end

@@ -14,6 +14,6 @@ class Label
   end
 
   def to_json(*_args)
-    { id: @id, title: @title, color: @color, items: items}
+    { id: @id, title: @title, color: @color, items: items }
   end
 end
