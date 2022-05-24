@@ -27,19 +27,22 @@ def exec_options(option, app)
   when '2'
     puts 'select 2'
   when '3'
-    puts 'select 3'
+    app.list_games
+    print "\n"
   when '4'
     puts 'select 4'
   when '5'
     app.list_labels
   when '6'
-    puts 'select 6'
+    app.list_authors
+    print "\n"
   when '7'
     app.add_book
   when '8'
     puts 'select 8'
   when '9'
-    puts 'select 9'
+    app.add_game
+    print "\n"
   when '10'
     puts 'select 10'
     exit

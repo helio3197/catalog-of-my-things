@@ -1,11 +1,16 @@
-['./book'].each do |file|
+['./book', './game', './author', './game_methods', './author_methods'].each do |file|
   require file
 end
 
 class App
+  include GameMethods
+  include AuthorMethods
+
   def initialize
     @books = []
     @labels = []
+    @games = []
+    @authors = []
   end
 
   def list_books
@@ -40,5 +45,19 @@ class App
   def add_book
     publisher, cover_state, publish_date = book_details
     @books << Book.new(publisher, cover_state, publish_date)
+  end
+
+  def invalid?(option, max_value)
+    return true if option.to_i > max_value || /\D/.match?(option)
+
+    false
+  end
+
+  def valid_date?(date)
+    date_format = '%Y-%m-%d'
+    DateTime.strptime(date, date_format)
+    true
+  rescue ArgumentError
+    false
   end
 end
