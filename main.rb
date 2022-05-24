@@ -42,6 +42,8 @@ def exec_options(option, app)
     app.add_game
   when '10'
     puts 'Thanks for using this app!'
+    app.save_files
+
     exit
   else
     print "Invalid option\n\n"
@@ -53,6 +55,7 @@ end
 def main
   puts 'Catalog of my things'
   app = App.new
+  app.load_files
   loop do
     exec_options(print_options, app)
     puts ''
