@@ -60,5 +60,4 @@ class App
   rescue ArgumentError
     false
   end
-
 end
