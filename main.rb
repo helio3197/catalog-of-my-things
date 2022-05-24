@@ -25,12 +25,12 @@ def exec_options(option, app)
   when '1'
     app.list_books
   when '2'
-    puts 'select 2'
+    app.list_music_albums
   when '3'
     app.list_games
     print "\n"
   when '4'
-    puts 'select 4'
+    app.list_genres
   when '5'
     app.list_labels
   when '6'
@@ -39,7 +39,7 @@ def exec_options(option, app)
   when '7'
     app.add_book
   when '8'
-    puts 'select 8'
+    app.add_music_album
   when '9'
     app.add_game
     print "\n"
