@@ -45,6 +45,7 @@ def exec_options(option, app)
     print "\n"
   when '10'
     puts 'select 10'
+    app.save_files
     exit
   else
     print "Invalid option\n\n"
@@ -56,6 +57,7 @@ end
 def main
   puts 'Catalog of my things'
   app = App.new
+  app.load_files
   loop do
     exec_options(print_options, app)
   end
