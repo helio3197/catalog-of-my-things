@@ -1,3 +1,5 @@
+require './game'
+
 ['./book'].each do |file|
   require file
 end
@@ -6,6 +8,7 @@ class App
   def initialize
     @books = []
     @labels = []
+    @games = []
   end
 
   def list_books
@@ -40,5 +43,24 @@ class App
   def add_book
     publisher, cover_state, publish_date = book_details
     @books << Book.new(publisher, cover_state, publish_date)
+  end
+
+  def game_details
+    puts 'Please enter multiplayer mode:'
+    print '> '
+    multiplayer = gets.chomp
+    puts 'Please enter the last date when the game was played'
+    print '> '
+    last_played_at = gets.chomp
+    puts 'Please provide publish date'
+    print '> '
+    publish_date = gets.chomp
+    [multiplayer, last_played_at, publish_date]
+  end
+
+  def add_game
+    multiplayer, last_played_at, publish_date = game_details
+
+    @games << Game.new(multiplayer, last_played_at, publish_date)
   end
 end
