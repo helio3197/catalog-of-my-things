@@ -1,6 +1,8 @@
 require './item'
 
 class Book < Item
+  attr_reader :publisher
+
   def initialize(publisher, cover_state, publish_date)
     super(publish_date)
     @id = id
