@@ -28,9 +28,9 @@ module BookMethod
 
   def add_book
     publisher, cover_state, publish_date = book_details
-    newBook = Book.new(publisher, cover_state, publish_date, false)
-    @books << newBook
-    newBook.add_label(select_label)
+    new_book = Book.new(publisher, cover_state, publish_date, false)
+    @books << new_book
+    new_book.add_label(select_label)
   end
 
   def load_books(filename = 'books.json')

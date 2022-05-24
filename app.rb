@@ -29,11 +29,10 @@ class App
   rescue ArgumentError
     false
   end
-  
+
   def invalid?(option, max_value)
     return true if option.to_i > max_value || /\D/.match?(option)
 
     false
   end
-  
 end
