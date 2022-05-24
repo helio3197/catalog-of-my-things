@@ -25,27 +25,25 @@ def exec_options(option, app)
   when '1'
     app.list_books
   when '2'
-    puts 'select 2'
+    app.list_music_albums
   when '3'
     app.list_games
-    print "\n"
   when '4'
-    puts 'select 4'
+    app.list_genres
   when '5'
     app.list_labels
   when '6'
     app.list_authors
-    print "\n"
   when '7'
     app.add_book
   when '8'
-    puts 'select 8'
+    app.add_music_album
   when '9'
     app.add_game
-    print "\n"
   when '10'
-    puts 'select 10'
+    puts 'Thanks for using this app!'
     app.save_files
+
     exit
   else
     print "Invalid option\n\n"
@@ -60,6 +58,7 @@ def main
   app.load_files
   loop do
     exec_options(print_options, app)
+    puts ''
   end
 end
 

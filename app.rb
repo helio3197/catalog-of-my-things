@@ -1,10 +1,22 @@
-['./book', './game', './author', './game_methods', './author_methods', 'json', 'date', './book_methods',
- './label_methods', './label'].each do |file|
+['./book',
+ './game',
+ './author',
+ './game_methods',
+ './author_methods',
+ './music_album_methods',
+ './music_album',
+ './genre_methods',
+ './genre',
+ 'json',
+ 'date',
+ './book_methods',
+ './label_methods',
+ './label'].each do |file|
   require file
 end
 
 class App
-  [BookMethod, LabelMethods, GameMethods, AuthorMethods].each do |method|
+  [BookMethod, LabelMethods, GameMethods, AuthorMethods, MusicAlbumMethods, GenreMethods].each do |method|
     include method
   end
 
@@ -13,6 +25,8 @@ class App
     @labels = []
     @games = []
     @authors = []
+    @music_albums = []
+    @genres = []
   end
 
   def load_files
