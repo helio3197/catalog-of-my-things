@@ -1,5 +1,7 @@
 # Catalog of my things
-> An app that allows you to record what books are in the library and who borrows them.
+> A ruby app that allows you to create Books, Music Albums, and Games objects and add a genre, author, and label to them.
+
+![diagram](./diagram.png)
 
 ## Built With
 - Ruby
