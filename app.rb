@@ -32,6 +32,7 @@ class App
   def load_files
     load_books
     load_labels
+    load_games
   end
 
   def save_files
