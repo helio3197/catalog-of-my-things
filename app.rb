@@ -37,6 +37,7 @@ class App
   def save_files
     save_books
     save_labels
+    save_games
   end
 
   def valid_date?(date)

@@ -45,4 +45,8 @@ module GameMethods
 
     puts 'Game created sucessfully!'
   end
+
+  def save_games
+    File.write('games.json', @games.to_json)
+  end
 end
