@@ -49,7 +49,7 @@ module AuthorMethods
 
       author['items'].each do |item_id|
         matched_item = @games.reduce do |result, item|
-          result = item if item == item_id
+          result = item if item.id == item_id
           result
         end
 
