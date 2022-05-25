@@ -13,4 +13,14 @@ class Game < Item
   def can_be_archived?
     super && @last_played_at < Date.new(Date.today.year - 2, Date.today.month, Date.today.day)
   end
+
+  def to_json(*_args)
+    {
+      multiplayer: @multiplayer,
+      last_played_at: @last_played_at.to_s,
+      publish_date: @publish_date.to_s,
+      archived: @archived,
+      id: @id
+    }.to_json
+  end
 end

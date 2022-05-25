@@ -45,4 +45,21 @@ module GameMethods
 
     puts 'Game created sucessfully!'
   end
+
+  def save_games
+    File.write('games.json', @games.to_json)
+  end
+
+  def load_games
+    games = File.exist?('games.json') ? JSON.parse(File.read('games.json')) : []
+    games.each do |game|
+      @games << Game.new(
+        game['multiplayer'],
+        game['last_played_at'],
+        game['publish_date'],
+        game['id'],
+        archived: game['archived']
+      )
+    end
+  end
 end

@@ -37,4 +37,26 @@ module AuthorMethods
     end
     @authors[selection.to_i - 1]
   end
+
+  def save_authors
+    File.write('authors.json', @authors.to_json)
+  end
+
+  def load_authors
+    authors = File.exist?('authors.json') ? JSON.parse(File.read('authors.json')) : []
+    authors.each do |author|
+      new_author = Author.new(author['first_name'], author['last_name'], author['id'])
+
+      author['items'].each do |item_id|
+        matched_item = @games.reduce do |result, item|
+          result = item if item == item_id
+          result
+        end
+
+        matched_item.add_author(new_author)
+      end
+
+      @authors << new_author
+    end
+  end
 end
