@@ -31,6 +31,7 @@ module BookMethod
     new_book = Book.new(publisher, cover_state, publish_date, false)
     @books << new_book
     new_book.add_label(select_label)
+    puts "Book added successfully"
   end
 
   def load_books(filename = './data/books.json')
