@@ -33,4 +33,23 @@ module GenreMethods
     end
     @genres[selection.to_i - 1]
   end
+
+  def save_genres
+    File.write('./data/genres.json', @genres.to_json)
+  end
+
+  def load_genres
+    genres = File.exist?('./data/genres.json') ? JSON.parse(File.read('./data/genres.json')) : []
+    genres.each do |genre|
+      new_genre = Genre.new(genre['name'], genre['id'])
+      genre['items'].each do |id|
+        matched_item = @music_albums.reduce do |result, item|
+          result = item if item == id
+          result
+        end
+        matched_item.add_genre(new_genre)
+      end
+      @genres << new_genre
+    end
+  end
 end

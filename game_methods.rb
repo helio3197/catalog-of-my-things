@@ -47,11 +47,11 @@ module GameMethods
   end
 
   def save_games
-    File.write('games.json', @games.to_json)
+    File.write('./data/games.json', @games.to_json)
   end
 
   def load_games
-    games = File.exist?('games.json') ? JSON.parse(File.read('games.json')) : []
+    games = File.exist?('./data/games.json') ? JSON.parse(File.read('./data/games.json')) : []
     games.each do |game|
       @games << Game.new(
         game['multiplayer'],

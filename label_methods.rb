@@ -1,9 +1,9 @@
 module LabelMethods
-  def save_labels(filename = 'labels.json')
+  def save_labels(filename = './data/labels.json')
     File.write(filename, @labels.to_json)
   end
 
-  def load_labels(filename = 'labels.json')
+  def load_labels(filename = './data/labels.json')
     labels = File.exist?(filename) ? JSON.parse(File.read(filename)) : []
     labels.each do |label|
       @labels << Label.new(label['title'], label['color'], label['id'], label['items'])

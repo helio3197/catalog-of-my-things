@@ -33,14 +33,14 @@ module BookMethod
     new_book.add_label(select_label)
   end
 
-  def load_books(filename = 'books.json')
+  def load_books(filename = './data/books.json')
     books = File.exist?(filename) ? JSON.parse(File.read(filename)) : []
     books.each do |book|
       @books << Book.new(book['publisher'], book['cover_state'], book['publish_date'], book['archived'], book['id'])
     end
   end
 
-  def save_books(filename = 'books.json')
+  def save_books(filename = './data/books.json')
     File.write(filename, @books.to_json)
   end
 end

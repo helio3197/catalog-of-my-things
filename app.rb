@@ -34,6 +34,8 @@ class App
     load_labels
     load_games
     load_authors
+    load_music_albums
+    load_genres
   end
 
   def save_files
@@ -41,6 +43,8 @@ class App
     save_labels
     save_games
     save_authors
+    save_music_albums
+    save_genres
   end
 
   def valid_date?(date)
