@@ -1,3 +1,5 @@
+![](https://wakatime.com/badge/user/be79098d-c59e-407c-8952-0f274bb9e265/project/f934d013-fda3-44e4-b709-1c60ff47fa05.svg)
+
 # Catalog of my things
 > A ruby app that allows you to create Books, Music Albums, and Games objects and add a genre, author, and label to them.
 
