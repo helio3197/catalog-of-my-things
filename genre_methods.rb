@@ -44,7 +44,7 @@ module GenreMethods
       new_genre = Genre.new(genre['name'], genre['id'])
       genre['items'].each do |id|
         matched_item = @music_albums.reduce do |result, item|
-          result = item if item == id
+          result = item if item.id == id
           result
         end
         matched_item.add_genre(new_genre)
