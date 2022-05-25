@@ -33,12 +33,14 @@ class App
     load_books
     load_labels
     load_games
+    load_authors
   end
 
   def save_files
     save_books
     save_labels
     save_games
+    save_authors
   end
 
   def valid_date?(date)

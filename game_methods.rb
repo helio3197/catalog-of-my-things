@@ -53,12 +53,12 @@ module GameMethods
   def load_games
     games = File.exist?('games.json') ? JSON.parse(File.read('games.json')) : []
     games.each do |game|
-      @games << Games.new(
+      @games << Game.new(
         game['multiplayer'],
         game['last_played_at'],
         game['publish_date'],
-        game['archived'],
-        game['id']
+        game['id'],
+        archived: game['archived']
       )
     end
   end
