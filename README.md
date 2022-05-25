@@ -5,6 +5,7 @@
 > A ruby app that allows you to create Books, Music Albums, and Games objects and add a genre, author, and label to them.
 
 ![diagram](./diagram.png)
+![termianl](terminal.png)
 
 ## Built With
 - Ruby
