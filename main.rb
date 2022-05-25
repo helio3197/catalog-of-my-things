@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require './app'
 
 def print_options
