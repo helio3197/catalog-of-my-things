@@ -42,4 +42,21 @@ module MusicAlbumMethods
     @music_albums << new_album
     puts 'Music album created sucessfully!'
   end
+
+  def save_music_albums
+    File.write('./data/music_albums.json', @music_albums.to_json)
+  end
+
+  def load_music_albums
+    directory = './data/music_albums.json'
+    albums = File.exist?(directory) ? JSON.parse(File.read(directory)) : []
+    albums.each do |album|
+      @music_albums << MusicAlbum.new(
+        album['on_spotify'],
+        album['publish_date'],
+        album['archived'],
+        album['id']
+      )
+    end
+  end
 end

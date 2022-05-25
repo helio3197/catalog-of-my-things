@@ -39,11 +39,11 @@ module AuthorMethods
   end
 
   def save_authors
-    File.write('authors.json', @authors.to_json)
+    File.write('./data/authors.json', @authors.to_json)
   end
 
   def load_authors
-    authors = File.exist?('authors.json') ? JSON.parse(File.read('authors.json')) : []
+    authors = File.exist?('./data/authors.json') ? JSON.parse(File.read('./data/authors.json')) : []
     authors.each do |author|
       new_author = Author.new(author['first_name'], author['last_name'], author['id'])
 
