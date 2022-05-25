@@ -40,7 +40,10 @@ module LabelMethods
       list_labels
       print '> '
       selection = gets.chomp
-      create_label if selection == '0'
+      if selection == '0'
+        create_label
+        select_label
+      end
       invalid?(selection, @labels.length) ? print("Invalid option, try again.\n\n") : break
     end
     @labels[selection.to_i - 1]
